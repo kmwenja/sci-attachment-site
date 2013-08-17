@@ -3,3 +3,6 @@ composer.lock
 
 # database settings
 db.config.php
+
+# test logs
+tests/_log
