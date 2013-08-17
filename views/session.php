@@ -46,6 +46,16 @@ class UserSessionController
 
 		$this->app->render('home.html.twig');
 	}
+
+	public function signout(){
+		unset($_SESSION['username']);
+		unset($_SESSION['name']);
+		unset($_SESSION['signed_in']);
+
+		session_destroy();
+
+		$this->app->redirect($this->app->urlFor('signin_form'));
+	}
 }
 
 function signin_form(){

@@ -5,7 +5,7 @@ require_once('views/session.php');
 
 $user_session_controller = new UserSessionController();
 
-$app->get('/signout', 'signout')->name('signout');
+$app->get('/signout', array($user_session_controller,'signout'))->name('signout');
 $app->get('/home', array($user_session_controller,'home'))->name('home');
 $app->post('/signin', array($user_session_controller,'signin'))->name('signin');
 $app->get('/signin', array($user_session_controller,'signin_form'))->name('signin_form');
