@@ -12,6 +12,31 @@ class UserSessionController
 	public function signin_form(){
 		$this->app->render('signin.html.twig');
 	}
+
+	public function signin(){
+		$username = $this->app->request()->post('username');
+		$password = $this->app->request()->post('password');
+
+		$users = ORM::for_table('user')->where('username', $username)->find_many();
+
+		if(count($users) !== 1){
+			$this->app->flash('error','invalid account');
+			$this->app->redirect($this->app->urlFor('signin_form'));
+			return;
+		}
+
+		if($users[0]->password !== $password){
+			$this->app->flash('error', 'invalid password');
+			$this->app->redirect($this->app->urlFor('signin_form'));
+			return;
+		}
+
+		$_SESSION['username'] = $users[0]->username;
+		$_SESSION['name'] = $users[0]->name;
+		$_SESSION['signed_in'] = True;
+
+		$this->app->redirect($this->app->urlFor('home'));
+	}
 }
 
 function signin_form(){
