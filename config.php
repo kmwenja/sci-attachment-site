@@ -27,3 +27,9 @@ $urlFor = new Twig_SimpleFunction('urlFor', function ($url, $data=null) use($app
 });
 
 $env->addFunction($urlFor);
+
+require_once('db.config.php');
+
+ORM::configure('mysql:host='.$_db_host.';dbname='.$_db_name);
+ORM::configure('username', $_db_username);
+ORM::configure('password', $_db_password);
