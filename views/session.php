@@ -11,6 +11,11 @@ class UserSessionController
 
 	public function signin_form()
 	{
+		if(($_SESSION and isset($_SESSION['signed_in']) and $_SESSION['signed_in'] === True)){
+			$this->app->redirect($this->app->urlFor('home'));
+			return;
+		}
+		
 		$this->app->render('signin.html.twig');
 	}
 
