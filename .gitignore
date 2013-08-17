@@ -1,2 +1,5 @@
 # composer lock file
 composer.lock
+
+# database settings
+db.config.php
