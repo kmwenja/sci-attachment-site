@@ -1,5 +1,19 @@
 <?php
 
+class UserSessionController
+{
+	protected $app;
+
+	public function __construct()
+	{
+		$this->app = \Slim\Slim::getInstance();
+	}
+
+	public function signin_form(){
+		$this->app->render('signin.html.twig');
+	}
+}
+
 function signin_form(){
 	$app = \Slim\Slim::getInstance();
 	$app->render('signin.html.twig');
@@ -38,7 +52,7 @@ function home(){
 		$app->redirect($app->urlFor('signin_form'));
 		return;
 	}
-	
+
 	$app->render('home.html.twig');
 }
 
