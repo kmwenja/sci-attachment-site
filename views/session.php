@@ -9,13 +9,18 @@ class UserSessionController
 		$this->app = \Slim\Slim::getInstance();
 	}
 
+	public function is_signed_in()
+	{
+		return ($_SESSION and isset($_SESSION['signed_in']) and $_SESSION['signed_in'] === True);
+	}
+
 	public function signin_form()
 	{
-		if(($_SESSION and isset($_SESSION['signed_in']) and $_SESSION['signed_in'] === True)){
+		if($this->is_signed_in()){
 			$this->app->redirect($this->app->urlFor('home'));
 			return;
 		}
-		
+
 		$this->app->render('signin.html.twig');
 	}
 
@@ -47,7 +52,7 @@ class UserSessionController
 
 	public function home()
 	{
-		if(!($_SESSION and isset($_SESSION['signed_in']) and $_SESSION['signed_in'] === True)){
+		if(!$this->is_signed_in()){
 			$this->app->redirect($this->app->urlFor('signin_form'));
 			return;
 		}
