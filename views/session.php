@@ -34,6 +34,11 @@ function signin(){
 
 function home(){
 	$app = \Slim\Slim::getInstance();
+	if(!($_SESSION and isset($_SESSION['signed_in']) and $_SESSION['signed_in'] === True)){
+		$app->redirect($app->urlFor('signin_form'));
+		return;
+	}
+	
 	$app->render('home.html.twig');
 }
 
