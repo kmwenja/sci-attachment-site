@@ -3,14 +3,14 @@
 {% block title %}Sign In{% endblock %}
 
 {% block body %}
-<form action="" method="POST">
-	<fieldet>
+<form action="{{ urlFor('signin') }}" method="POST">
+	<fieldset>
 		<legend>Please sign in</legend>
 		<label for="username">Username</label>
 		<input type="text" name="username">
 		<label for="password">Password</label>
 		<input type="password" name="password">
 		<button type="submit">Sign In</button>
-	</fieldet>
+	</fieldset>
 </form>
 {% endblock %}
