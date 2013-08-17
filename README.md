@@ -27,6 +27,7 @@ $_db_password = 'password';
 Testing is done using [Codeception](http://codeception.com/).
 
 To run tests:
+
 1. Download ```composer.phar```
 2. Go to the project's root
 2. Run ```$ php codecept.phar run```
