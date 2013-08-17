@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+	<h1>Home</h1>
+	{% if sessionData('signed_in') %}
+	<p>{{ sessionData('name') }}</p>
+	<a href="{{ urlFor('signout') }}">Sign Out</a>
+	{% endif %}
+{% endblock %}
