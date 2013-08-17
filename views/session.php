@@ -36,3 +36,15 @@ function home(){
 	$app = \Slim\Slim::getInstance();
 	$app->render('home.html.twig');
 }
+
+function signout(){
+	$app = \Slim\Slim::getInstance();
+
+	unset($_SESSION['username']);
+	unset($_SESSION['name']);
+	unset($_SESSION['signed_in']);
+
+	session_destroy();
+
+	$app->redirect($app->urlFor('signin_form'));
+}

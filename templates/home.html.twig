@@ -6,5 +6,6 @@
 	<h1>Home</h1>
 	{% if sessionData('signed_in') %}
 	<p>{{ sessionData('name') }}</p>
+	<a href="{{ urlFor('signout') }}">Sign Out</a>
 	{% endif %}
 {% endblock %}
