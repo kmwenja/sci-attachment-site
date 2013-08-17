@@ -1,13 +1,13 @@
 <?php
 
+session_start();
+
 require_once('vendor/autoload.php');
 
 $app = new \Slim\Slim();
 
 require_once('config.php');
 
-$app->get('/', function() use($app){
-	$app->render('index.html');
-});
+require_once('routes.php');
 
 $app->run();
